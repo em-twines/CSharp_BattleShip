@@ -1,0 +1,15 @@
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\bin\Debug\net7.0\CSharpBattleShip.exe
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\bin\Debug\net7.0\CSharpBattleShip.deps.json
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\bin\Debug\net7.0\CSharpBattleShip.runtimeconfig.json
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\bin\Debug\net7.0\CSharpBattleShip.dll
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\bin\Debug\net7.0\CSharpBattleShip.pdb
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\CSharpBattleShip.csproj.AssemblyReference.cache
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\CSharpBattleShip.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\CSharpBattleShip.AssemblyInfoInputs.cache
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\CSharpBattleShip.AssemblyInfo.cs
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\CSharpBattleShip.csproj.CoreCompileInputs.cache
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\CSharpBattleShip.dll
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\refint\CSharpBattleShip.dll
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\CSharpBattleShip.pdb
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\CSharpBattleShip.genruntimeconfig.cache
+C:\Users\Emily Twines\Documents\devCodeCamp\CSharpBattleShip\obj\Debug\net7.0\ref\CSharpBattleShip.dll

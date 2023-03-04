@@ -5,25 +5,22 @@ namespace CSharpBattleShip
         private string name = "";
         private int size = 0;
         private int health = 0;
-        private int[] location = new int[] { };
-        private int[,] newBoard = new int[,] { };
+        // private int[] location = new int[] { };
+        public int[,] newBoard = new int[21,21];
 
-        public Ship(string name, int size, int health, int[] location)
+        public Ship(string name, int size, int health)
         {
-            this.size = 4;
-            this.health = 4;
-            this.location = new int[] { };
 
         }
 
-        private void PlaceShipsX(Ship ship)
+        private void PlaceShipsX()
         {
             Random rnd = new Random();
-            int starting_position_x = rnd.Next(1, (21 - ship.size + 1));
+            int starting_position_x = rnd.Next(1, (21 - this.size + 1));
             int starting_position_y = rnd.Next(1, 21);
 
 
-            int x_span_until = starting_position_x + ship.size;
+            int x_span_until = starting_position_x + this.size;
 
 
             for (int y = 0; y < 21; y++)
@@ -46,14 +43,14 @@ namespace CSharpBattleShip
             Console.WriteLine(this.newBoard);
 
         }
-        private void PlaceShipsY(Ship ship)
+        private void PlaceShipsY()
         {
             Random rnd = new Random();
-            int starting_position_y = rnd.Next(1, (21 - ship.size + 1));
+            int starting_position_y = rnd.Next(1, (21 - this.size + 1));
             int starting_position_x = rnd.Next(1, 21);
 
 
-            int y_span_until = starting_position_y + ship.size;
+            int y_span_until = starting_position_y + this.size;
 
 
             for (int y = 0; y < 21; y++)
@@ -77,17 +74,17 @@ namespace CSharpBattleShip
 
         }
 
-        private void PlaceShips(Ship ship)
+        public void PlaceShips()
         {
             Random rnd = new Random();
             int decidingInt = rnd.Next(0,1);
             if (decidingInt == 0)
             {
-                PlaceShipsX(ship);
+                PlaceShipsX();
             }
             else
             {
-                PlaceShipsY(ship); 
+                PlaceShipsY(); 
             }
             Console.WriteLine(newBoard);
             
