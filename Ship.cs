@@ -4,7 +4,7 @@ namespace CSharpBattleShip
     {
         private string name;
         protected int size;
-        private int health;
+        protected int health;
         // private int[] location = new int[] { };
         public int[,] newBoard = new int[21,21];
 
