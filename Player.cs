@@ -9,23 +9,23 @@ namespace CSharpBattleShip
 {
     public class Player
     {
-        public Ship aircraftCarrier;
-        public Ship battleship;
-        public Ship submarine;
-        public Ship destroyer; 
+        public AircraftCarrier aircraftcarrier;
+        public Battleship battleship;
+        public Submarine submarine;
+        public Destroyer destroyer;
 
 
         public Player()
         {
-            aircraftCarrier = new Ship("Aircraft Carrier", 5, 5);
-            battleship = new Ship("Battleship", 4, 4);
-            submarine = new Ship("Submarine", 3, 3);
-            destroyer = new Ship("Destroyer", 2, 2);
+            aircraftcarrier = new AircraftCarrier("Aircraft Carrier");
+            battleship = new Battleship("Battleship");
+            submarine = new Submarine("Submarine");
+            destroyer = new Destroyer("Destroyer");
         }
 
         public void CreateMatrices()
         {
-            aircraftCarrier.PlaceShips();
+            aircraftcarrier.PlaceShips();
             battleship.PlaceShips();
             submarine.PlaceShips();
             destroyer.PlaceShips();
@@ -44,22 +44,42 @@ namespace CSharpBattleShip
             n = 21;
 
 
-            //while (total != 16)
+            //while (total != 28)
             //{
 
             for (i = 0; i < n; i++)
-                //for (j = 0; j < n; j++)
+            {
                 for (j = 0; j < n; j++)
-                    arr3[i, j] = this.aircraftCarrier.newBoard[i, j] + this.battleship.newBoard[i, j];
+                {
+                    arr3[i, j] = aircraftcarrier.newBoard[i, j] + battleship.newBoard[i, j];
+                }
+            }
+
+            //for (j = 0; j < n; j++)
 
             for (i = 0; i < n; i++)
+            {
                 for (j = 0; j < n; j++)
-                    arr6[i, j] = this.submarine.newBoard[i, j] + this.destroyer.newBoard[i, j];
-
+                {
+                    arr6[i, j] = submarine.newBoard[i, j] + destroyer.newBoard[i, j];
+                }
+            }
             for (i = 0; i < n; i++)
+            {
                 for (j = 0; j < n; j++)
+                {
                     arr7[i, j] = arr3[i, j] + arr6[i, j];
+                }
+            }
+            Console.WriteLine(arr7);
 
+            for (i = 0; i < n; i++) 
+            {
+                for (j = 0; j < n; j++) 
+                {
+                    total += arr7[i,j];
+                }
+            }
             //List<int> flatArray = FlattenArray(arr7);
             //total = flatArray.Sum();
             //}

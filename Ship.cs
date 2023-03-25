@@ -2,27 +2,27 @@ namespace CSharpBattleShip
 {
     public class Ship
     {
-        private string name;
+        protected string name;
         protected int size;
         protected int health;
         // private int[] location = new int[] { };
         public int[,] newBoard = new int[21,21];
 
-        public Ship(string name, int size, int health)
+        public Ship(string name)
         {
             this.name = name;
-            this.size = size;
-            this.health = health;
+            //this.size = size;
+            //this.health = health;
         }
 
         public int[,] PlaceShipsX()
         {
-            Random rnd = new Random();
-            int starting_position_x = rnd.Next(1, (21 - this.size + 1));
-            int starting_position_y = rnd.Next(1, 21);
+            Random rnd = new();
+            int starting_position_x = rnd.Next(1, 22 - (size + 1));
+            int starting_position_y = rnd.Next(1, 22);
 
 
-            int x_span_until = starting_position_x + this.size;
+            int x_span_until = starting_position_x + size;
 
 
             for (int y = 0; y < 21; y++)
@@ -47,12 +47,12 @@ namespace CSharpBattleShip
         }
         public int[,] PlaceShipsY()
         {
-            Random rnd = new Random();
-            int starting_position_y = rnd.Next(1, (21 - this.size + 1));
-            int starting_position_x = rnd.Next(1, 21);
+            Random rnd = new();
+            int starting_position_y = rnd.Next(1, (22 - size + 1));
+            int starting_position_x = rnd.Next(1, 22);
 
             
-            int y_span_until = starting_position_y + this.size;
+            int y_span_until = starting_position_y + size;
 
 
             for (int y = 0; y < 21; y++)
@@ -67,7 +67,7 @@ namespace CSharpBattleShip
                             //this.newBoard[y, x] = 2;
                             newBoard[y, x] = 2;
 
-                            starting_position_x += 1;
+                            starting_position_y += 1;
                         }
                     }
                 }
@@ -80,7 +80,7 @@ namespace CSharpBattleShip
 
         public void PlaceShips()
         {
-            Random rnd = new Random();
+            Random rnd = new();
             int decidingInt = rnd.Next(0,2);
             if (decidingInt == 0)
             {
