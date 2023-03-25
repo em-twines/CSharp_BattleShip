@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Reflection.Metadata.Ecma335;
+using System.Xml.Schema;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CSharpBattleShip
 {
@@ -32,7 +34,15 @@ namespace CSharpBattleShip
 
         }
 
-        public int CheckMatrices()
+        public void ResetMatrices()
+        {
+            Array.Clear(aircraftcarrier.newBoard, 0, aircraftcarrier.newBoard.Length);
+            Array.Clear(battleship.newBoard, 0, battleship.newBoard.Length);
+            Array.Clear(submarine.newBoard, 0, submarine.newBoard.Length);
+            Array.Clear(destroyer.newBoard, 0, destroyer.newBoard.Length);
+        }
+
+        public int AddMatrices()
         {
 
             int total = 0;
@@ -80,25 +90,25 @@ namespace CSharpBattleShip
                     total += arr7[i,j];
                 }
             }
-            //List<int> flatArray = FlattenArray(arr7);
-            //total = flatArray.Sum();
-            //}
+
             return total;
         }
 
 
-        //List<int> FlattenArray(int[,] arr)
-        //{
-        //    List<int> list = new List<int>(21 * 21);
+        public void CheckMatrices()
+        {                
+           int newTotal; 
 
-        //    for (int e = 0; e < 21; e++)
-        //    {
-        //        for (int f = 0; f < 21; f++)
-        //            list.Add(arr[e, f]);
-        //    }
-        //    return list;
-        //}
-
+            do
+            {
+                newTotal = 0;
+                ResetMatrices();
+                CreateMatrices();
+                newTotal = AddMatrices();
+            }
+            while (newTotal != 28);
+        }
+        
 
     }
 }
