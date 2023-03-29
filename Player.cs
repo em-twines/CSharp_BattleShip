@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using System.Reflection.Metadata.Ecma335;
 using System.Xml.Schema;
 using System.Security.Cryptography.X509Certificates;
+using System.Runtime.CompilerServices;
+using System;
+using System.Runtime.InteropServices;
+
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CSharpBattleShip
 {
@@ -53,9 +58,9 @@ namespace CSharpBattleShip
             int i, j, n;
             n = 21;
 
+            List<string> printedLine = new List<string>();
 
-            //while (total != 28)
-            //{
+
 
             for (i = 0; i < n; i++)
             {
@@ -65,7 +70,6 @@ namespace CSharpBattleShip
                 }
             }
 
-            //for (j = 0; j < n; j++)
 
             for (i = 0; i < n; i++)
             {
@@ -79,25 +83,37 @@ namespace CSharpBattleShip
                 for (j = 0; j < n; j++)
                 {
                     arr7[i, j] = arr3[i, j] + arr6[i, j];
-                }
-            }
-            Console.WriteLine(arr7);
 
-            for (i = 0; i < n; i++) 
-            {
-                for (j = 0; j < n; j++) 
+                }
+
+                for (int x = 0; x < n; x++)
                 {
-                    total += arr7[i,j];
+                    printedLine.Add((arr7[0, x]).ToString());
+                    if (x == 20)
+                    {
+                        Console.WriteLine(string.Join(", ", printedLine));
+                        printedLine.Clear();
+                    }
+                }
+
+            }
+
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    total += arr7[i, j];
                 }
             }
 
             return total;
         }
 
-
+    
         public void CheckMatrices()
-        {                
-           int newTotal; 
+        {
+            int newTotal;
 
             do
             {
@@ -107,8 +123,14 @@ namespace CSharpBattleShip
                 newTotal = AddMatrices();
             }
             while (newTotal != 28);
+
+            //            foreach(int i in numbers2D)
+            //{
+            //                System.Console.Write("{0} ", i);
+            //            }
+
         }
-        
+
 
     }
-}
+ }
