@@ -21,10 +21,12 @@ namespace CSharpBattleShip
         public Battleship battleship;
         public Submarine submarine;
         public Destroyer destroyer;
+        public string name; 
 
 
-        public Player()
+        public Player(string name)
         {
+            this.name = name; 
             aircraftcarrier = new AircraftCarrier("Aircraft Carrier");
             battleship = new Battleship("Battleship");
             submarine = new Submarine("Submarine");
@@ -98,7 +100,7 @@ namespace CSharpBattleShip
         //next i need to add the combined array up 
         // then if they add up, print the combined array. 
 
-        public int AddMatrices(int[,] matrixToAdd)
+        public static int AddMatrices(int[,] matrixToAdd)
         {
             int total = 0;
             int i, j, n;
