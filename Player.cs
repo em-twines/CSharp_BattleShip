@@ -154,7 +154,7 @@ namespace CSharpBattleShip
             {
                 for (int x = 0; x<n; x++)
                 {
-                    printedLine.Add((matrixToPrint[0, x]).ToString());
+                    printedLine.Add((matrixToPrint[y, x]).ToString());
                     if (x == 20)
                     {
                         Console.WriteLine(string.Join(", ", printedLine));
