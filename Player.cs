@@ -11,6 +11,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Numerics;
 
 namespace CSharpBattleShip
 {
@@ -47,10 +48,10 @@ namespace CSharpBattleShip
             Array.Clear(destroyer.newBoard, 0, destroyer.newBoard.Length);
         }
 
-        public int AddMatrices()
+        public int[,] CombineMatrices()
         {
 
-            int total = 0;
+            //int total = 0;
             int[,] arr3 = new int[21, 21];
             int[,] arr6 = new int[21, 21];
             int[,] arr7 = new int[21, 21];
@@ -58,7 +59,7 @@ namespace CSharpBattleShip
             int i, j, n;
             n = 21;
 
-            List<string> printedLine = new List<string>();
+            //List<string> printedLine = new List<string>();
 
 
 
@@ -86,50 +87,82 @@ namespace CSharpBattleShip
 
                 }
 
-                for (int x = 0; x < n; x++)
-                {
-                    printedLine.Add((arr7[0, x]).ToString());
-                    if (x == 20)
-                    {
-                        Console.WriteLine(string.Join(", ", printedLine));
-                        printedLine.Clear();
-                    }
-                }
-
             }
+            return arr7;
+        }
 
 
+
+
+        //add matrices returns the combined array. 
+        //next i need to add the combined array up 
+        // then if they add up, print the combined array. 
+
+        public int AddMatrices(int[,] matrixToAdd)
+        {
+            int total = 0;
+            int i, j, n;
+            n = 21;
             for (i = 0; i < n; i++)
             {
                 for (j = 0; j < n; j++)
                 {
-                    total += arr7[i, j];
+                    total += matrixToAdd[i, j];
                 }
             }
 
             return total;
         }
 
-    
+
+
+
         public void CheckMatrices()
         {
             int newTotal;
 
             do
             {
-                newTotal = 0;
+                //newTotal = 0;
                 ResetMatrices();
                 CreateMatrices();
-                newTotal = AddMatrices();
+                //returns arr7;
+                int[,] combinedArray = CombineMatrices();
+                //returns aggregate of combinedArray;
+                newTotal = AddMatrices(combinedArray);
+                if (newTotal == 28)
+                {
+                    PrintMatrix(combinedArray);
+
+                }
+
             }
             while (newTotal != 28);
 
-            //            foreach(int i in numbers2D)
-            //{
-            //                System.Console.Write("{0} ", i);
-            //            }
+
 
         }
+
+        public static void PrintMatrix(int [,] matrixToPrint)
+        {
+            List<string> printedLine = new();
+            int n = 21; 
+
+            for (int y = 0; y < n; y++)
+            {
+                for (int x = 0; x<n; x++)
+                {
+                    printedLine.Add((matrixToPrint[0, x]).ToString());
+                    if (x == 20)
+                    {
+                        Console.WriteLine(string.Join(", ", printedLine));
+                        printedLine.Clear();
+                    }
+                }
+            }
+           
+        }
+           
 
 
     }
