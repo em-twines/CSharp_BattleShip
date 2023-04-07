@@ -29,23 +29,36 @@ namespace CSharpBattleShip
 
         public static void PrintWelcome()
         {
-            Console.WriteLine(
+            Console.WriteLine(@"
 
-@"Welcome to Battleship!!! 
+        Welcome to Battleship!!! 
 
-Before we get started, let's review the rules. Each player will receive a randomized game board with their ships placed in secret locations. 
+        Before we get started, let's review the rules. Each player will receive a randomized game board with their ships placed in secret locations. 
 
-Players will guess coordinates(x, y), trying to identify the position(horizontal or vertical) of their opponent's ships.
+        Players will guess coordinates(x, y), trying to identify the position(horizontal or vertical) of their opponent's ships.
 
-The Destroyer is 2 spaces long.
-The Submarine is 3.
-The Battleship is 4.
-And the Aircraft Carrier is 5.
+        The Destroyer is 2 spaces long.
+        The Submarine is 3.
+        The Battleship is 4.
+        And the Aircraft Carrier is 5.
 
-The first player will make their guess, and if they hit any of the spaces containing an enemy ship, 
-that position will change from '0' to '2' If they miss, that position will change to a '1' 
+        The first player will make their guess, and if they hit any of the spaces containing an enemy ship, 
+        that position will change from '0' to '2' If they miss, that position will change to a '1' 
 
-Be the first to sink all 4 ships to win!");
+        Be the first to sink all 4 ships to win!
+
+        Press 'space' when you are ready to continue.
+
+        ");
+
+            ConsoleKeyInfo keyinfo;
+            do
+            {
+                keyinfo = Console.ReadKey();
+
+            }
+            while (keyinfo.Key != ConsoleKey.Spacebar);
+        
 
         }
 
@@ -53,10 +66,9 @@ Be the first to sink all 4 ships to win!");
         public static void AnnounceBoard(Player playerA, Player playerB)
         {
 
-            //player 1, your board is ready...
-            Console.WriteLine
-                ($@"{playerA.name} your board is ready. {playerB.name} please look away.
-{playerA.name} press 'space' when you are ready to see your board in secret.");
+            Console.WriteLine($@"
+        {playerA.name} your board is ready. {playerB.name} please look away.
+        {playerA.name} press 'space' when you are ready to see your board in secret.");
 
             ConsoleKeyInfo keyinfo;
             do
@@ -69,18 +81,6 @@ Be the first to sink all 4 ships to win!");
 
 
     }
-
-    //public void SpacePressed()
-    //    {
-    //        ConsoleKeyInfo keyinfo;
-    //        do
-    //        {
-    //            keyinfo = Console.ReadKey();
-    //            Console.WriteLine(keyinfo.Key + " was pressed");
-    //        }
-    //        while (keyinfo.Key != ConsoleKey.Spacebar);
-    //    }
-    //}
 
 
 }
