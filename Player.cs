@@ -171,7 +171,7 @@ namespace CSharpBattleShip
                     {
                         if (x == 0)
                         {
-                            printedLine.Add($"{matrixToPrint[y, x]}");
+                            printedLine.Add($" {matrixToPrint[y, x]}");
 
                         }
                         else if (x > 0 && x < 10)
@@ -196,9 +196,14 @@ namespace CSharpBattleShip
                 {
                     for (int x = 0; x < n; x++)
                     {
-                        if (x < 21)
+                        if (x == 0)
                         {
 
+                            printedLine.Add($"  {matrixToPrint[y, x]}");
+
+                        }
+                        else if (x > 0 && x < 21)
+                        {
                             printedLine.Add($" {matrixToPrint[y, x]}");
 
                         }
