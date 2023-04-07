@@ -21,12 +21,12 @@ namespace CSharpBattleShip
         public Battleship battleship;
         public Submarine submarine;
         public Destroyer destroyer;
-        public string name; 
+        public string name;
 
 
         public Player(string name)
         {
-            this.name = name; 
+            this.name = name;
             aircraftcarrier = new AircraftCarrier("Aircraft Carrier");
             battleship = new Battleship("Battleship");
             submarine = new Submarine("Submarine");
@@ -54,12 +54,12 @@ namespace CSharpBattleShip
         {
 
             //int total = 0;
-            int[,] arr3 = new int[21, 21];
-            int[,] arr6 = new int[21, 21];
-            int[,] arr7 = new int[21, 21];
+            int[,] arr3 = new int[22, 22];
+            int[,] arr6 = new int[22, 22];
+            int[,] arr7 = new int[22, 22];
 
             int i, j, n;
-            n = 21;
+            n = 22;
 
             //List<string> printedLine = new List<string>();
 
@@ -69,6 +69,9 @@ namespace CSharpBattleShip
             {
                 for (j = 0; j < n; j++)
                 {
+                    //Console.WriteLine(arr3[i, j]);
+                    //Console.WriteLine(aircraftcarrier.newBoard[i, j]);
+                    //Console.WriteLine(battleship.newBoard[i, j]);
                     arr3[i, j] = aircraftcarrier.newBoard[i, j] + battleship.newBoard[i, j];
                 }
             }
@@ -136,11 +139,12 @@ namespace CSharpBattleShip
                 {
 
                     //add numbers to x and y [0]; 
-
                     int[,] board1 = DefineColumnNumbers();
                     int[,] board2 = DefineRowNumbers();
                     int[,] board3 = AddTwoBoards(board1, board2);
                     int[,] finalBoard = AddTwoBoards(board3, combinedArray);
+
+                    //print matrix in a pretty table
 
 
                     PrintMatrix(finalBoard);
@@ -154,25 +158,126 @@ namespace CSharpBattleShip
 
         }
 
-        public static void PrintMatrix(int [,] matrixToPrint)
+        public static void PrintMatrix(int[,] matrixToPrint)
         {
             List<string> printedLine = new();
-            int n = 21; 
+            int n = 22;
 
-            for (int y = 0; y < n; y++)
+            for (int y = 0; y < 22; y++)
             {
-                for (int x = 0; x<n; x++)
+                if (y == 0)
                 {
-                    printedLine.Add((matrixToPrint[y, x]).ToString());
-                    if (x == 20)
+                    for (int x = 0; x < n; x++)
                     {
-                        Console.WriteLine(string.Join(", ", printedLine));
-                        printedLine.Clear();
+                        if (x == 0)
+                        {
+                            printedLine.Add($"{matrixToPrint[y, x]}");
+
+                        }
+                        else if (x > 0 && x < 10)
+                        {
+                            printedLine.Add($" {matrixToPrint[y, x]}");
+
+                        }
+                        else if (x > 9 && x < 21)
+                        {
+                            printedLine.Add($"{matrixToPrint[y, x]}");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(string.Join(" ", printedLine));
+                            printedLine.Clear();
+
+                        }
+                    }
+                }
+                else if (y > 0 && y < 10)
+                {
+                    for (int x = 0; x < n; x++)
+                    {
+                        if (x < 21)
+                        {
+
+                            printedLine.Add($" {matrixToPrint[y, x]}");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(string.Join(" ", printedLine));
+                            printedLine.Clear();
+                        }
+                    }
+                }
+                else
+                {
+                    for (int x = 0; x < n; x++)
+                    {
+                        if (x < 21)
+                        {
+
+                            printedLine.Add($" {matrixToPrint[y, x]}");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(string.Join(" ", printedLine));
+                            printedLine.Clear();
+                        }
                     }
                 }
             }
-           
         }
+
+        //}
+        //{
+
+        //    if(y < 10 && x == 0)
+        //    {
+        //        printedLine.Add($" {matrixToPrint[y, x]}");
+
+        //    }
+        //    else if (y > 9 && x > 0 && x < 10)
+        //    {
+        //        printedLine.Add($" {matrixToPrint[y, x]}");
+
+        //    }
+        //    else if (x > 9 && x < 21)
+        //    {
+        //        printedLine.Add($"{matrixToPrint[y, x]}");
+
+        //    }
+        //    else
+        //{
+        //    Console.WriteLine(string.Join(" ", printedLine));
+        //    printedLine.Clear();
+        //}
+
+
+        //for (int y = 9; y < 21; y++)
+        //{
+        //    for (int x = 0; x < n; x++)
+        //    {
+
+        //        if (x < 10)
+        //        {
+        //            printedLine.Add($" {matrixToPrint[y, x]}");
+
+        //        }
+        //        else if (x > 9 && x < 21)
+        //        {
+        //            printedLine.Add($"{matrixToPrint[y, x]}");
+
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine(string.Join(" ", printedLine));
+        //            printedLine.Clear();
+        //        }
+
+        //    }
+        //}
+
 
 
         public CustomArray<int> CustomArray = new();
@@ -182,9 +287,9 @@ namespace CSharpBattleShip
         public int[,] DefineColumnNumbers()
         {
 
-            int[,] blankBoard = new int[21, 21];
+            int[,] blankBoard = new int[22, 22];
 
-            for (int j = 0; j < 21; j++)
+            for (int j = 0; j < 22; j++)
             {
                 blankBoard[0, j] = j;
             }
@@ -196,9 +301,9 @@ namespace CSharpBattleShip
         public int[,] DefineRowNumbers()
         {
 
-            int[,] blankBoard = new int[21, 21];
+            int[,] blankBoard = new int[22, 22];
 
-            for (int j = 0; j < 21; j++)
+            for (int j = 0; j < 22; j++)
             {
                 blankBoard[j, 0] = j;
             }
@@ -207,11 +312,11 @@ namespace CSharpBattleShip
         }
 
 
-        public int [,] AddTwoBoards(int[,] board1, int[,]board2)
+        public int[,] AddTwoBoards(int[,] board1, int[,] board2)
         {
             int i, j, n;
-            n = 21;
-            int[,] board3 = new int[21, 21];
+            n = 22;
+            int[,] board3 = new int[22, 22];
 
 
             for (i = 0; i < n; i++)
@@ -222,26 +327,10 @@ namespace CSharpBattleShip
                 }
             }
 
-            return board3; 
+            return board3;
         }
 
-        //int j = 0;
 
-        //for (int y = 1; y < Math.Sqrt(board.Length); y++)
-        //{
-        //    int[] row = CustomArray.GetRow(board, 0);
-        //    return row;
-        //}
-
-
-        //for every item in the column, return the row
-        //for (int y = 1; y < Math.Sqrt(board.Length); y++) 
-        //    {
-        //        int[] row = CustomArray.GetRow(board, 0);
-        //        return row; 
-        //    }
     }
-
-
 
 }
