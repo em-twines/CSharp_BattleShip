@@ -14,8 +14,8 @@ namespace CSharpBattleShip
 {
     internal class GameBoard
     {   
-        Player player1 = new Player ("Player 1");
-        Player player2 = new Player ("Player 2");
+        Player player1 = new("Player 1");
+        Player player2 = new("Player 2");
         public void RunGame()
         {
             

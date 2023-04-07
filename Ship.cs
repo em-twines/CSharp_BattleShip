@@ -18,7 +18,7 @@ namespace CSharpBattleShip
         public int[,] PlaceShipsX()
         {
             Random rnd = new();
-            int starting_position_x = rnd.Next(1, 22 - (size + 1));
+            int starting_position_x = rnd.Next(1, 22 - (size));
             int starting_position_y = rnd.Next(1, 22);
 
 
@@ -48,7 +48,7 @@ namespace CSharpBattleShip
         public int[,] PlaceShipsY()
         {
             Random rnd = new();
-            int starting_position_y = rnd.Next(1, (22 - size + 1));
+            int starting_position_y = rnd.Next(1, (22 - size));
             int starting_position_x = rnd.Next(1, 22);
 
             

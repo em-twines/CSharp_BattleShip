@@ -134,7 +134,16 @@ namespace CSharpBattleShip
                 newTotal = AddMatrices(combinedArray);
                 if (newTotal == 28)
                 {
-                    PrintMatrix(combinedArray);
+
+                    //add numbers to x and y [0]; 
+
+                    int[,] board1 = DefineColumnNumbers();
+                    int[,] board2 = DefineRowNumbers();
+                    int[,] board3 = AddTwoBoards(board1, board2);
+                    int[,] finalBoard = AddTwoBoards(board3, combinedArray);
+
+
+                    PrintMatrix(finalBoard);
 
                 }
 
@@ -164,8 +173,75 @@ namespace CSharpBattleShip
             }
            
         }
-           
 
 
+        public CustomArray<int> CustomArray = new();
+
+
+
+        public int[,] DefineColumnNumbers()
+        {
+
+            int[,] blankBoard = new int[21, 21];
+
+            for (int j = 0; j < 21; j++)
+            {
+                blankBoard[0, j] = j;
+            }
+
+            return blankBoard;
+        }
+
+
+        public int[,] DefineRowNumbers()
+        {
+
+            int[,] blankBoard = new int[21, 21];
+
+            for (int j = 0; j < 21; j++)
+            {
+                blankBoard[j, 0] = j;
+            }
+
+            return blankBoard;
+        }
+
+
+        public int [,] AddTwoBoards(int[,] board1, int[,]board2)
+        {
+            int i, j, n;
+            n = 21;
+            int[,] board3 = new int[21, 21];
+
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    board3[i, j] = board1[i, j] + board2[i, j];
+                }
+            }
+
+            return board3; 
+        }
+
+        //int j = 0;
+
+        //for (int y = 1; y < Math.Sqrt(board.Length); y++)
+        //{
+        //    int[] row = CustomArray.GetRow(board, 0);
+        //    return row;
+        //}
+
+
+        //for every item in the column, return the row
+        //for (int y = 1; y < Math.Sqrt(board.Length); y++) 
+        //    {
+        //        int[] row = CustomArray.GetRow(board, 0);
+        //        return row; 
+        //    }
     }
- }
+
+
+
+}
