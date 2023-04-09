@@ -141,7 +141,7 @@ namespace CSharpBattleShip
 
 
 
-                    // !!!! and the number of 2's in the matrix is correct...
+                // !!!! and the number of 2's in the matrix is correct...
                 {
 
 
@@ -156,7 +156,7 @@ namespace CSharpBattleShip
 
 
                     PrintMatrix(finalBoard);
-
+                    ClearConsole();
                 }
 
             }
@@ -302,6 +302,23 @@ namespace CSharpBattleShip
         }
 
 
+        public void ClearConsole()
+        {
+            Console.WriteLine(@"
+        Press 'space' when you are finished viewing your board.");
+
+            ConsoleKeyInfo keyinfo;
+            do
+            {
+                keyinfo = Console.ReadKey();
+
+            }
+            while (keyinfo.Key != ConsoleKey.Spacebar);
+
+            Console.Clear();
+        }
     }
+
+
 
 }
