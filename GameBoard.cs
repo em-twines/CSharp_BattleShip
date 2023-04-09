@@ -27,7 +27,7 @@ namespace CSharpBattleShip
 
         }
 
-        public static void PrintWelcome()
+        public void PrintWelcome()
         {
             Console.WriteLine(@"
 
@@ -51,14 +51,9 @@ namespace CSharpBattleShip
 
         ");
 
-            ConsoleKeyInfo keyinfo;
-            do
-            {
-                keyinfo = Console.ReadKey();
+            player1.CheckSpaceBarPress();
 
-            }
-            while (keyinfo.Key != ConsoleKey.Spacebar);
-        
+
 
         }
 
@@ -71,13 +66,8 @@ namespace CSharpBattleShip
         {playerA.name} press 'space' when you are ready to see your board in secret.
 ");
 
-            ConsoleKeyInfo keyinfo;
-            do
-            {
-                keyinfo = Console.ReadKey();
+            playerA.CheckSpaceBarPress();
 
-            }
-            while (keyinfo.Key != ConsoleKey.Spacebar);
         }
 
 

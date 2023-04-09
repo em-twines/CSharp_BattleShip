@@ -307,6 +307,13 @@ namespace CSharpBattleShip
             Console.WriteLine(@"
         Press 'space' when you are finished viewing your board.");
 
+            CheckSpaceBarPress();
+
+            Console.Clear();
+        }
+
+        public void CheckSpaceBarPress()
+        {
             ConsoleKeyInfo keyinfo;
             do
             {
@@ -314,8 +321,6 @@ namespace CSharpBattleShip
 
             }
             while (keyinfo.Key != ConsoleKey.Spacebar);
-
-            Console.Clear();
         }
     }
 
