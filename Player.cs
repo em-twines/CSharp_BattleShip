@@ -136,28 +136,27 @@ namespace CSharpBattleShip
                 //returns aggregate of combinedArray;
                 newTotal = AddMatrices(combinedArray);
                 if (newTotal == 28)
-
-
-
-
-
-                // !!!! and the number of 2's in the matrix is correct...
                 {
+                    // !!!! and the number of 2's in the matrix is correct...
+                    int numberOfTwoOccurrences = CountOccurrences(combinedArray);
+                    if (numberOfTwoOccurrences == 14)
+                    {
+                        //add numbers to x and y [0]; 
+                        int[,] board1 = DefineColumnNumbers();
+                        int[,] board2 = DefineRowNumbers();
+                        int[,] board3 = AddTwoBoards(board1, board2);
+                        int[,] finalBoard = AddTwoBoards(board3, combinedArray);
+
+                        //print matrix in a pretty table
 
 
-
-                    //add numbers to x and y [0]; 
-                    int[,] board1 = DefineColumnNumbers();
-                    int[,] board2 = DefineRowNumbers();
-                    int[,] board3 = AddTwoBoards(board1, board2);
-                    int[,] finalBoard = AddTwoBoards(board3, combinedArray);
-
-                    //print matrix in a pretty table
-
-
-                    PrintMatrix(finalBoard);
-                    ClearConsole();
+                        PrintMatrix(finalBoard);
+                        ClearConsole();
+                    }
                 }
+
+
+
 
             }
             while (newTotal != 28);
@@ -165,6 +164,23 @@ namespace CSharpBattleShip
 
 
         }
+
+
+        public int CountOccurrences(int[,] matrix)
+        {
+            int[] count = new int[21];  // use this for counting occurrences
+
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    count[matrix[row, col]]++;
+                }
+            }
+            int integerCount = count[2];
+            return integerCount;
+        }
+
 
         public static void PrintMatrix(int[,] matrixToPrint)
         {
