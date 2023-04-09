@@ -136,7 +136,15 @@ namespace CSharpBattleShip
                 //returns aggregate of combinedArray;
                 newTotal = AddMatrices(combinedArray);
                 if (newTotal == 28)
+
+
+
+
+
+                    // !!!! and the number of 2's in the matrix is correct...
                 {
+
+
 
                     //add numbers to x and y [0]; 
                     int[,] board1 = DefineColumnNumbers();
@@ -171,7 +179,7 @@ namespace CSharpBattleShip
                     {
                         if (x == 0)
                         {
-                            printedLine.Add($" {matrixToPrint[y, x]}");
+                            printedLine.Add($"           {matrixToPrint[y, x]}");
 
                         }
                         else if (x > 0 && x < 10)
@@ -199,7 +207,7 @@ namespace CSharpBattleShip
                         if (x == 0)
                         {
 
-                            printedLine.Add($"  {matrixToPrint[y, x]}");
+                            printedLine.Add($"            {matrixToPrint[y, x]}");
 
                         }
                         else if (x > 0 && x < 21)
@@ -216,9 +224,16 @@ namespace CSharpBattleShip
                 }
                 else
                 {
+
                     for (int x = 0; x < n; x++)
                     {
-                        if (x < 21)
+                        if (x == 0)
+                        {
+
+                            printedLine.Add($"           {matrixToPrint[y, x]}");
+
+                        }
+                        else if (x < 21)
                         {
 
                             printedLine.Add($" {matrixToPrint[y, x]}");
@@ -233,55 +248,6 @@ namespace CSharpBattleShip
                 }
             }
         }
-
-        //}
-        //{
-
-        //    if(y < 10 && x == 0)
-        //    {
-        //        printedLine.Add($" {matrixToPrint[y, x]}");
-
-        //    }
-        //    else if (y > 9 && x > 0 && x < 10)
-        //    {
-        //        printedLine.Add($" {matrixToPrint[y, x]}");
-
-        //    }
-        //    else if (x > 9 && x < 21)
-        //    {
-        //        printedLine.Add($"{matrixToPrint[y, x]}");
-
-        //    }
-        //    else
-        //{
-        //    Console.WriteLine(string.Join(" ", printedLine));
-        //    printedLine.Clear();
-        //}
-
-
-        //for (int y = 9; y < 21; y++)
-        //{
-        //    for (int x = 0; x < n; x++)
-        //    {
-
-        //        if (x < 10)
-        //        {
-        //            printedLine.Add($" {matrixToPrint[y, x]}");
-
-        //        }
-        //        else if (x > 9 && x < 21)
-        //        {
-        //            printedLine.Add($"{matrixToPrint[y, x]}");
-
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine(string.Join(" ", printedLine));
-        //            printedLine.Clear();
-        //        }
-
-        //    }
-        //}
 
 
 

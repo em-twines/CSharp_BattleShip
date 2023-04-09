@@ -68,7 +68,8 @@ namespace CSharpBattleShip
 
             Console.WriteLine($@"
         {playerA.name} your board is ready. {playerB.name} please look away.
-        {playerA.name} press 'space' when you are ready to see your board in secret.");
+        {playerA.name} press 'space' when you are ready to see your board in secret.
+");
 
             ConsoleKeyInfo keyinfo;
             do
