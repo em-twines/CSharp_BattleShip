@@ -168,7 +168,7 @@ namespace CSharpBattleShip
 
         public int CountOccurrences(int[,] matrix)
         {
-            int[] count = new int[21];  // use this for counting occurrences
+            int[] count = new int[21]; 
 
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
