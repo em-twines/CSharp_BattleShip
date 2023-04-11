@@ -2,9 +2,9 @@ namespace CSharpBattleShip
 {
     public class Ship
     {
-        protected string name;
+        public string name;
         protected int size;
-        protected int health;
+        public int health;
         // private int[] location = new int[] { };
         public int[,] newBoard = new int[22,22];
 

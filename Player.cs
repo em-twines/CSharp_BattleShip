@@ -22,6 +22,7 @@ namespace CSharpBattleShip
         public Submarine submarine;
         public Destroyer destroyer;
         public string name;
+        public int health;
 
 
         public Player(string name)
@@ -31,6 +32,7 @@ namespace CSharpBattleShip
             battleship = new Battleship("Battleship");
             submarine = new Submarine("Submarine");
             destroyer = new Destroyer("Destroyer");
+            health = aircraftcarrier.health + battleship.health + submarine.health + destroyer.health;
         }
 
         public void CreateMatrices()
@@ -53,7 +55,6 @@ namespace CSharpBattleShip
         public int[,] CombineMatrices()
         {
 
-            //int total = 0;
             int[,] arr3 = new int[22, 22];
             int[,] arr6 = new int[22, 22];
             int[,] arr7 = new int[22, 22];
@@ -61,17 +62,12 @@ namespace CSharpBattleShip
             int i, j, n;
             n = 22;
 
-            //List<string> printedLine = new List<string>();
-
 
 
             for (i = 0; i < n; i++)
             {
                 for (j = 0; j < n; j++)
                 {
-                    //Console.WriteLine(arr3[i, j]);
-                    //Console.WriteLine(aircraftcarrier.newBoard[i, j]);
-                    //Console.WriteLine(battleship.newBoard[i, j]);
                     arr3[i, j] = aircraftcarrier.newBoard[i, j] + battleship.newBoard[i, j];
                 }
             }
@@ -99,9 +95,6 @@ namespace CSharpBattleShip
 
 
 
-        //add matrices returns the combined array. 
-        //next i need to add the combined array up 
-        // then if they add up, print the combined array. 
 
         public static int AddMatrices(int[,] matrixToAdd)
         {
@@ -128,7 +121,6 @@ namespace CSharpBattleShip
 
             do
             {
-                //newTotal = 0;
                 ResetMatrices();
                 CreateMatrices();
                 //returns arr7;
@@ -137,7 +129,7 @@ namespace CSharpBattleShip
                 newTotal = AddMatrices(combinedArray);
                 if (newTotal == 28)
                 {
-                    // !!!! and the number of 2's in the matrix is correct...
+                    // and the number of 2's in the matrix is correct...
                     int numberOfTwoOccurrences = CountOccurrences(combinedArray);
                     if (numberOfTwoOccurrences == 14)
                     {
@@ -148,7 +140,6 @@ namespace CSharpBattleShip
                         int[,] finalBoard = AddTwoBoards(board3, combinedArray);
 
                         //print matrix in a pretty table
-
 
                         PrintMatrix(finalBoard);
                         ClearConsole();
