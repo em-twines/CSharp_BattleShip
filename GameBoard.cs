@@ -103,8 +103,8 @@ namespace CSharpBattleShip
             Here is your opponent's board as you know it, {player1.name}: 
             {turnHits1}");
 
-            int[,]turnBoard;
-            int[,]turnHitsToAdd1 = new int[21,21];
+            int[,] turnBoard;
+            int[,] turnHitsToAdd1 = new int[21, 21];
             var tuple = InputAndEvalGuess(out turnBoard, player2Board);
             if (turnHitsToAdd1[tuple.Item1, tuple.Item2] == turnHits1[tuple.Item1, tuple.Item2])
             {
@@ -134,61 +134,68 @@ namespace CSharpBattleShip
 
             //while (!working) 
             //{
-                Console.WriteLine(@$"
+            Console.WriteLine(@$"
             {player1.name}: choose your coordinate horizontally(1 - 20), then press 'enter':");
-                // add catch for if input is given...
-                int guessX = Int32.Parse(Console.ReadLine());
-                // add try/catch here for numbers greater than 21
-                Console.WriteLine(@$"
+            // add catch for if input is given...
+            int guessX = Int32.Parse(Console.ReadLine());
+            // add try/catch here for numbers greater than 21
+            Console.WriteLine(@$"
             {player1.name}: choose your coordinate vertically(1 - 20), then press 'enter':");
-                int guessY = Int32.Parse(Console.ReadLine());
-                // add try/catch here
+            int guessY = Int32.Parse(Console.ReadLine());
+            // add try/catch here
 
 
 
 
-                turnBoard = new int [21, 21];
-                if (player2Board[guessY, guessX] == 2)
-                {
-                    turnBoard[guessY,guessX] = 2;
-                }
-                else
-                {
-                    turnBoard[guessY, guessX] = 1;
-                    Console.WriteLine("It's a miss!");
-                }
-                //working = true; 
-                return new Tuple<int, int>(guessY, guessX);
-
+            turnBoard = new int[21, 21];
+            if (player2Board[guessY, guessX] == 2)
+            {
+                turnBoard[guessY, guessX] = 2;
             }
+            else
+            {
+                turnBoard[guessY, guessX] = 1;
+                Console.WriteLine("It's a miss!");
+            }
+            //working = true; 
+            return new Tuple<int, int>(guessY, guessX);
 
         }
 
 
-    public void TakeDamage(Player playerA, Player playerB, Ship ship)
-        
-    {
-        if (ship.health > 0)
-        {
-            Console.WriteLine("It's a hit!");
-            ship.health -= 1;
-            playerB.health -= 1; 
-            //is that line above necessary??
 
-            Console.WriteLine(@$"
+
+        public static void TakeDamage(Player playerA, Player playerB, Ship ship)
+
+        {
+            if (ship.health > 0)
+            {
+
+
+                // add time.sleep(1) to the following CWL's. 
+
+
+                Console.WriteLine("It's a hit!");
+                ship.health -= 1;
+                playerB.health -= 1;
+                //is that line above necessary??
+
+                Console.WriteLine(@$"
             {playerB.name}'s {ship.name} now has {ship.health} health left!");
 
-            if (ship.health == 0)
-            {
-                Console.WriteLine(@$"
+                if (ship.health == 0)
+                {
+                    Console.WriteLine(@$"
             {playerA.name} sank your {ship.name}!");
+                }
 
+                Console.WriteLine($@"
+            {playerB.name} has {playerB.health} health left!");
             }
         }
-    }
-
-
 
     }
 
 }
+
+
