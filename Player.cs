@@ -100,7 +100,7 @@ namespace CSharpBattleShip
         {
             int total = 0;
             int i, j, n;
-            n = 21;
+            n = 22;
             for (i = 0; i < n; i++)
             {
                 for (j = 0; j < n; j++)
@@ -115,10 +115,10 @@ namespace CSharpBattleShip
 
 
 
-        public void CheckMatrices()
+        public int[,] CheckMatrices()
         {
             int newTotal;
-
+            int[,] finalBoard = new int[22, 22]; 
             do
             {
                 ResetMatrices();
@@ -133,11 +133,17 @@ namespace CSharpBattleShip
                     int numberOfTwoOccurrences = CountOccurrences(combinedArray);
                     if (numberOfTwoOccurrences == 14)
                     {
+
                         //add numbers to x and y [0]; 
-                        int[,] board1 = DefineColumnNumbers();
-                        int[,] board2 = DefineRowNumbers();
-                        int[,] board3 = AddTwoBoards(board1, board2);
-                        int[,] finalBoard = AddTwoBoards(board3, combinedArray);
+
+                        int [,] board3 = WriteBlankBoard();
+
+
+
+                        //int[,] board1 = DefineColumnNumbers();
+                        //int[,] board2 = DefineRowNumbers();
+                        //int[,] board3 = AddTwoBoards(board1, board2);
+                        finalBoard = AddTwoBoards(board3, combinedArray);
 
                         //print matrix in a pretty table
 
@@ -152,8 +158,18 @@ namespace CSharpBattleShip
             }
             while (newTotal != 28);
 
+            return finalBoard;
+
+        }
 
 
+        public int [,] WriteBlankBoard()
+        {
+            int[,] board1 = DefineColumnNumbers();
+            int[,] board2 = DefineRowNumbers();
+            int[,] board3 = AddTwoBoards(board1, board2);
+
+            return board3; 
         }
 
 
@@ -173,7 +189,7 @@ namespace CSharpBattleShip
         }
 
 
-        public static void PrintMatrix(int[,] matrixToPrint)
+        public void PrintMatrix(int[,] matrixToPrint)
         {
             List<string> printedLine = new();
             int n = 22;
@@ -257,12 +273,93 @@ namespace CSharpBattleShip
         }
 
 
+        public void PrintMatrixTurns(int[,] matrixToPrint)
+        {
+            List<string> printedLine = new();
+            int n = 22;
 
+            for (int y = 0; y < 22; y++)
+            {
+                if (y == 0)
+                {
+                    for (int x = 0; x < n; x++)
+                    {
+                        if (x == 0)
+                        {
+                            printedLine.Add($"            {matrixToPrint[y, x]}");
+
+                        }
+                        else if (x > 0 && x < 10)
+                        {
+                            printedLine.Add($" {matrixToPrint[y, x]}");
+
+                        }
+                        else if (x > 9 && x < 21)
+                        {
+                            printedLine.Add($"{matrixToPrint[y, x]}");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(string.Join(" ", printedLine));
+                            printedLine.Clear();
+
+                        }
+                    }
+                }
+                else if (y > 0 && y < 10)
+                {
+                    for (int x = 0; x < n; x++)
+                    {
+                        if (x == 0)
+                        {
+
+                            printedLine.Add($"            {matrixToPrint[y, x]}");
+
+                        }
+                        else if (x > 0 && x < 21)
+                        {
+                            printedLine.Add($" {matrixToPrint[y, x]}");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(string.Join(" ", printedLine));
+                            printedLine.Clear();
+                        }
+                    }
+                }
+                else
+                {
+
+                    for (int x = 0; x < n; x++)
+                    {
+                        if (x == 0)
+                        {
+
+                            printedLine.Add($"           {matrixToPrint[y, x]}");
+
+                        }
+                        else if (x < 21)
+                        {
+
+                            printedLine.Add($" {matrixToPrint[y, x]}");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(string.Join(" ", printedLine));
+                            printedLine.Clear();
+                        }
+                    }
+                }
+            }
+        }
         public CustomArray<int> CustomArray = new();
 
 
 
-        public int[,] DefineColumnNumbers()
+        public static int[,] DefineColumnNumbers()
         {
 
             int[,] blankBoard = new int[22, 22];
@@ -276,7 +373,7 @@ namespace CSharpBattleShip
         }
 
 
-        public int[,] DefineRowNumbers()
+        public static int[,] DefineRowNumbers()
         {
 
             int[,] blankBoard = new int[22, 22];

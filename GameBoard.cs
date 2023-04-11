@@ -22,20 +22,49 @@ namespace CSharpBattleShip
 
             PrintWelcome();
             AnnounceBoard(player1, player2);
-            player1.CheckMatrices();
+            int[,] player1Board = player1.CheckMatrices();
             AnnounceBoard(player2, player1);
-            player2.CheckMatrices();
+            int[,] player2Board = player2.CheckMatrices();
 
 
             int gameRound = 0;
-            int[,] turnHits1 = new int[21, 21];
-            int[,] turnHits2 = new int[21, 21];
+            int[,] turnHits1 = new int[22, 22];
+            int[,] turnHits2 = new int[22, 22];
+
+            int[,] oneToTwentyOne = player1.WriteBlankBoard();
+
+            //TESTING: 
+            //int[,] testToPrint = player1.WriteBlankBoard();
+            //player1.PrintMatrix(testToPrint);
+            //player1.PrintMatrix(oneToTwentyOne);
+            //player1.PrintMatrix(turnHits1);
+
+            turnHits1 = player1.AddTwoBoards(turnHits1, oneToTwentyOne);
+            turnHits2 = player1.AddTwoBoards(turnHits2, oneToTwentyOne);
+
 
             while (player1.health > 0 && player2.health > 0)
             {
                 gameRound += 1;
                 Console.WriteLine(@$"Round: {gameRound}");
+                turnHits1 = PlayTurn(player1, player2, turnHits1, player2Board);
+                turnHits2 = PlayTurn(player2, player1, turnHits2, player1Board);
+            }
 
+            if(player1.health <= 0)
+            {
+                Console.WriteLine(@$"
+            {player2.name} is the winner! Thanks to both our players today and congratulations to {player2.name}!");
+            }
+            else if (player2.health <= 0)
+            {
+                Console.WriteLine(@$"
+            {player1.name} is the winner! Thanks to both our players today and congratulations to {player1.name}!");
+            }
+            else
+            {
+                Console.WriteLine(@$"
+            It's a tie! Thanks for playing!");
             }
 
 
@@ -97,14 +126,17 @@ namespace CSharpBattleShip
 
 
 
-        public int[,] PlayTurn(Player playerA, Player playerB, int[,] turnHits1, int[,] turnHits2, int[,] player2Board)
+        public int[,] PlayTurn(Player playerA, Player playerB, int[,] turnHits1, int[,] player2Board)
         {
             Console.WriteLine($@"
-            Here is your opponent's board as you know it, {playerA.name}: 
-            {turnHits1}");
+        Here is your opponent's board as you know it, {playerA.name}:
+        ");
 
+            player1.PrintMatrixTurns(turnHits1);
+            
+            
             int[,] turnBoard;
-            int[,] turnHitsToAdd1 = new int[21, 21];
+            int[,] turnHitsToAdd1 = new int[22, 22];
             var tuple = InputAndEvalGuess(out turnBoard, player2Board);
             if (turnHitsToAdd1[tuple.Item1, tuple.Item2] == turnHits1[tuple.Item1, tuple.Item2])
             {
@@ -163,7 +195,7 @@ namespace CSharpBattleShip
 
 
 
-            turnBoard = new int[21, 21];
+            turnBoard = new int[22, 22];
             if (player2Board[guessY, guessX] == 2)
             {
                 turnBoard[guessY, guessX] = 2;
