@@ -28,8 +28,8 @@ namespace CSharpBattleShip
 
 
             int gameRound = 0;
-            int turnHits1 = 0;
-            int turnHits2 = 0;
+            int[,] turnHits1 = new int[21, 21];
+            int[,] turnHits2 = new int[21, 21];
 
             while (player1.health > 0 && player2.health > 0)
             {
@@ -97,10 +97,10 @@ namespace CSharpBattleShip
 
 
 
-        public int PlayTurn(int[,] turnHits1, int[,] turnHits2, int[,] player2Board)
+        public int[,] PlayTurn(Player playerA, Player playerB, int[,] turnHits1, int[,] turnHits2, int[,] player2Board)
         {
             Console.WriteLine($@"
-            Here is your opponent's board as you know it, {player1.name}: 
+            Here is your opponent's board as you know it, {playerA.name}: 
             {turnHits1}");
 
             int[,] turnBoard;
@@ -110,16 +110,32 @@ namespace CSharpBattleShip
             {
                 turnHitsToAdd1[tuple.Item1, tuple.Item2] = 0;
                 Console.WriteLine(@$"
-            {player2.name} has {player2.health} left!");
+            {playerB.name} has {playerB.health} left!");
             }
             else
             {
-                turnHits1 = player1.AddTwoBoards(turnHits1, turnHitsToAdd1);
-                if (player2.destroyer.newBoard[tuple.Item1, tuple.item2] == 2)
+                turnHits1 = playerA.AddTwoBoards(turnHits1, turnHitsToAdd1);
+                if (playerB.destroyer.newBoard[tuple.Item1, tuple.Item2] == 2)
                 {
-                    //take damage;
+                    TakeDamage(playerA, playerB, playerB.destroyer);
                 }
+                else if (playerB.submarine.newBoard[tuple.Item1, tuple.Item2] == 2)
+                {
+                    TakeDamage(playerA, playerB, playerB.submarine);
+                }
+                else if (playerB.battleship.newBoard[tuple.Item1, tuple.Item2] == 2)
+                {
+                    TakeDamage(playerA, playerB, playerB.battleship);
+                }
+                else if (playerB.aircraftcarrier.newBoard[tuple.Item1, tuple.Item2] == 2)
+                {
+                    TakeDamage(playerA, playerB, playerB.aircraftcarrier);
+                }
+                //add time.sleep(1); 
+
             }
+            
+            return turnHits1;
 
 
 
