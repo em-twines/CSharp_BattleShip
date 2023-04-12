@@ -51,7 +51,7 @@ namespace CSharpBattleShip
                 turnHits2 = PlayTurn(player2, player1, turnHits2, player1Board);
             }
 
-            if(player1.health <= 0)
+            if (player1.health <= 0)
             {
                 Console.WriteLine(@$"
             {player2.name} is the winner! Thanks to both our players today and congratulations to {player2.name}!");
@@ -133,16 +133,16 @@ namespace CSharpBattleShip
         ");
 
             player1.PrintMatrixTurns(turnHits1);
-            
-            
-            int[,] turnBoard;
+
+
+            //int[,] turnBoard;
             int[,] turnHitsToAdd1 = new int[22, 22];
-            var tuple = InputAndEvalGuess(out turnBoard, player2Board);
+            var tuple = InputAndEvalGuess(out turnHitsToAdd1, player2Board);
             if (turnHitsToAdd1[tuple.Item1, tuple.Item2] == turnHits1[tuple.Item1, tuple.Item2])
             {
                 turnHitsToAdd1[tuple.Item1, tuple.Item2] = 0;
                 Console.WriteLine(@$"
-            {playerB.name} has {playerB.health} left!");
+        {playerB.name} has {playerB.health} health left!");
             }
             else
             {
@@ -166,12 +166,10 @@ namespace CSharpBattleShip
                 //add time.sleep(1); 
 
             }
-            
+
             return turnHits1;
 
 
-
-            //not complete
 
         }
 
@@ -183,16 +181,55 @@ namespace CSharpBattleShip
             //while (!working) 
             //{
             Console.WriteLine(@$"
-            {player1.name}: choose your coordinate horizontally(1 - 20), then press 'enter':");
+        {player1.name}: choose your coordinate horizontally(1 - 20), then press 'enter':");
             // add catch for if input is given...
-            int guessX = Int32.Parse(Console.ReadLine());
-            // add try/catch here for numbers greater than 21
+
+            string input = Console.ReadLine();
+            
+            int guessX;
+
+            bool success = int.TryParse(input, out guessX);
+            while (!success)
+            {
+                if (success)
+
+                    Console.WriteLine(@$"
+        {guessX}");
+
+                else
+                {
+                    Console.WriteLine(@"
+        Invalid Input.");
+                }
+
+            }
+
+            //int guessX = Int32.Parse(Console.ReadLine());
+
+
             Console.WriteLine(@$"
-            {player1.name}: choose your coordinate vertically(1 - 20), then press 'enter':");
-            int guessY = Int32.Parse(Console.ReadLine());
-            // add try/catch here
+        {player1.name}: choose your coordinate vertically(1 - 20), then press 'enter':");
+            //int guessY = Int32.Parse(Console.ReadLine());
 
+            string inputY = Console.ReadLine();
 
+            int guessY;
+
+            bool successY = int.TryParse(inputY, out guessY);
+            while (!successY)
+            {
+                if (successY)
+
+                    Console.WriteLine(@$"
+        {guessY}");
+
+                else
+                {
+                    Console.WriteLine(@"
+        Invalid Input.");
+                }
+
+            }
 
 
             turnBoard = new int[22, 22];
@@ -203,7 +240,8 @@ namespace CSharpBattleShip
             else
             {
                 turnBoard[guessY, guessX] = 1;
-                Console.WriteLine("It's a miss!");
+                Console.WriteLine(@"
+        It's a miss!");
             }
             //working = true; 
             return new Tuple<int, int>(guessY, guessX);
@@ -223,22 +261,23 @@ namespace CSharpBattleShip
                 // add time.sleep(1) to the following CWL's. 
 
 
-                Console.WriteLine("It's a hit!");
+                Console.WriteLine(@"
+        It's a hit!");
                 ship.health -= 1;
                 playerB.health -= 1;
                 //is that line above necessary??
 
                 Console.WriteLine(@$"
-            {playerB.name}'s {ship.name} now has {ship.health} health left!");
+        {playerB.name}'s {ship.name} now has {ship.health} health left!");
 
                 if (ship.health == 0)
                 {
                     Console.WriteLine(@$"
-            {playerA.name} sank your {ship.name}!");
+        {playerA.name} sank your {ship.name}!");
                 }
 
                 Console.WriteLine($@"
-            {playerB.name} has {playerB.health} health left!");
+        {playerB.name} has {playerB.health} health left!");
             }
         }
 
