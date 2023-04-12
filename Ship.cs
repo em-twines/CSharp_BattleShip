@@ -6,7 +6,7 @@ namespace CSharpBattleShip
         protected int size;
         public int health;
         // private int[] location = new int[] { };
-        public int[,] newBoard = new int[22,22];
+        public int[,] newBoard = new int[21,21];
 
         public Ship(string name)
         {
@@ -25,16 +25,15 @@ namespace CSharpBattleShip
             int x_span_until = starting_position_x + size;
 
 
-            for (int y = 0; y < 22; y++)
+            for (int y = 0; y < 21; y++)
             {
-                for (int x = 0; x < 22; x++)
+                for (int x = 0; x < 21; x++)
                 {
 
                     if (starting_position_x < x_span_until)
                     {
                         if (y == starting_position_y & x == starting_position_x)
                         {
-                            //this.newBoard[y, x] = 2;
                             newBoard[y, x] = 2;
                             starting_position_x += 1;
                         }
@@ -55,16 +54,15 @@ namespace CSharpBattleShip
             int y_span_until = starting_position_y + size;
 
 
-            for (int y = 0; y < 22; y++)
+            for (int y = 0; y < 21; y++)
             {
-                for (int x = 0; x < 22; x++)
+                for (int x = 0; x < 21; x++)
                 {
 
                     if (starting_position_y < y_span_until)
                     {
                         if (y == starting_position_y & x == starting_position_x)
                         {
-                            //this.newBoard[y, x] = 2;
                             newBoard[y, x] = 2;
 
                             starting_position_y += 1;

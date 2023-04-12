@@ -28,8 +28,8 @@ namespace CSharpBattleShip
 
 
             int gameRound = 0;
-            int[,] turnHits1 = new int[22, 22];
-            int[,] turnHits2 = new int[22, 22];
+            int[,] turnHits1 = new int[21, 21];
+            int[,] turnHits2 = new int[21, 21];
 
             int[,] oneToTwentyOne = player1.WriteBlankBoard();
 
@@ -136,7 +136,7 @@ namespace CSharpBattleShip
 
 
             //int[,] turnBoard;
-            int[,] turnHitsToAdd1 = new int[22, 22];
+            int[,] turnHitsToAdd1 = new int[21, 21];
             var tuple = InputAndEvalGuess(out turnHitsToAdd1, player2Board);
             if (turnHitsToAdd1[tuple.Item1, tuple.Item2] == turnHits1[tuple.Item1, tuple.Item2])
             {
@@ -232,7 +232,7 @@ namespace CSharpBattleShip
             }
 
 
-            turnBoard = new int[22, 22];
+            turnBoard = new int[21, 21];
             if (player2Board[guessY, guessX] == 2)
             {
                 turnBoard[guessY, guessX] = 2;

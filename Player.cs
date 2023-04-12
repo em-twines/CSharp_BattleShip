@@ -55,12 +55,12 @@ namespace CSharpBattleShip
         public int[,] CombineMatrices()
         {
 
-            int[,] arr3 = new int[22, 22];
-            int[,] arr6 = new int[22, 22];
-            int[,] arr7 = new int[22, 22];
+            int[,] arr3 = new int[21, 21];
+            int[,] arr6 = new int[21, 21];
+            int[,] arr7 = new int[21, 21];
 
             int i, j, n;
-            n = 22;
+            n = 21;
 
 
 
@@ -100,7 +100,7 @@ namespace CSharpBattleShip
         {
             int total = 0;
             int i, j, n;
-            n = 22;
+            n = 21;
             for (i = 0; i < n; i++)
             {
                 for (j = 0; j < n; j++)
@@ -118,7 +118,7 @@ namespace CSharpBattleShip
         public int[,] CheckMatrices()
         {
             int newTotal;
-            int[,] finalBoard = new int[22, 22]; 
+            int[,] finalBoard = new int[21, 21]; 
             do
             {
                 ResetMatrices();
@@ -193,8 +193,9 @@ namespace CSharpBattleShip
         {
             List<string> printedLine = new();
             int n = 22;
+            int m = 21;
 
-            for (int y = 0; y < 22; y++)
+            for (int y = 0; y < 21; y++)
             {
                 if (y == 0)
                 {
@@ -210,7 +211,7 @@ namespace CSharpBattleShip
                             printedLine.Add($" {matrixToPrint[y, x]}");
 
                         }
-                        else if (x > 9 && x < 21)
+                        else if (x > 9 && x < m)
                         {
                             printedLine.Add($"{matrixToPrint[y, x]}");
 
@@ -233,7 +234,7 @@ namespace CSharpBattleShip
                             printedLine.Add($"            {matrixToPrint[y, x]}");
 
                         }
-                        else if (x > 0 && x < 21)
+                        else if (x > 0 && x < m)
                         {
                             printedLine.Add($" {matrixToPrint[y, x]}");
 
@@ -256,7 +257,7 @@ namespace CSharpBattleShip
                             printedLine.Add($"           {matrixToPrint[y, x]}");
 
                         }
-                        else if (x < 21)
+                        else if (x > 0 && x < m)
                         {
 
                             printedLine.Add($" {matrixToPrint[y, x]}");
@@ -277,8 +278,8 @@ namespace CSharpBattleShip
         {
             List<string> printedLine = new();
             int n = 22;
-
-            for (int y = 0; y < 22; y++)
+            int m = 21; 
+            for (int y = 0; y < 21; y++)
             {
                 if (y == 0)
                 {
@@ -294,7 +295,7 @@ namespace CSharpBattleShip
                             printedLine.Add($" {matrixToPrint[y, x]}");
 
                         }
-                        else if (x > 9 && x < 21)
+                        else if (x > 9 && x < m)
                         {
                             printedLine.Add($"{matrixToPrint[y, x]}");
 
@@ -317,7 +318,7 @@ namespace CSharpBattleShip
                             printedLine.Add($"            {matrixToPrint[y, x]}");
 
                         }
-                        else if (x > 0 && x < 21)
+                        else if (x > 0 && x < m)
                         {
                             printedLine.Add($" {matrixToPrint[y, x]}");
 
@@ -362,9 +363,9 @@ namespace CSharpBattleShip
         public static int[,] DefineColumnNumbers()
         {
 
-            int[,] blankBoard = new int[22, 22];
+            int[,] blankBoard = new int[21, 21];
 
-            for (int j = 0; j < 22; j++)
+            for (int j = 0; j < 21; j++)
             {
                 blankBoard[0, j] = j;
             }
@@ -376,9 +377,9 @@ namespace CSharpBattleShip
         public static int[,] DefineRowNumbers()
         {
 
-            int[,] blankBoard = new int[22, 22];
+            int[,] blankBoard = new int[21, 21];
 
-            for (int j = 0; j < 22; j++)
+            for (int j = 0; j < 21; j++)
             {
                 blankBoard[j, 0] = j;
             }
@@ -390,8 +391,8 @@ namespace CSharpBattleShip
         public int[,] AddTwoBoards(int[,] board1, int[,] board2)
         {
             int i, j, n;
-            n = 22;
-            int[,] board3 = new int[22, 22];
+            n = 21;
+            int[,] board3 = new int[21, 21];
 
 
             for (i = 0; i < n; i++)
